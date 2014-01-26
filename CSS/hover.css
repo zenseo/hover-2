@@ -1,0 +1,1496 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 微软雅黑;
+}
+
+.button{
+	margin: 0.5em;
+	padding: 1em;
+	cursor: pointer;
+	text-decoration: none;
+	background: #333;
+	color: #666;
+  display: inline-block;
+  box-shadow: 0 0 1px rgba(0,0,0,0);
+  position: relative;
+}
+
+/* Grow */
+.grow {
+  display: inline-block;
+  /* transition-duration可以设置在：hover事件下，此时不用再设置transition-property属性 */
+  transition-duration: 0.3s;
+  transition-property: transform; 
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.grow:hover {
+  /*注释掉-webkit-transform：属性会导致chrome不能正常显示，其他ok*/
+  -webkit-transform: scale(1.1); 
+  transform: scale(1.1);
+}
+
+
+/*shirnk*/
+.shirnk{
+  display: inline-block;
+  transition-duration: 0.3s;
+  transition-property: transform; 
+  box-shadow: 0 0 1px rgba(0,0,0,0); 
+}
+
+.shirnk:hover{
+  -webkit-transform: scale(.9); 
+  transform: scale(.9);
+}
+
+/*pulse*/
+/*解决chrome下的动画兼容*/
+@-webkit-keyframes pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+/*若设置为50%和100%,则动画略显迟钝*/
+@keyframes pulse{
+  25%{
+    transform: scale(1.1);
+  }
+  75%{
+    transform: scale(.9);
+  }
+}
+
+.pulse{
+  display: inline-block;
+  box-shadow: 0 0 1px rgba(0,0,0,0);
+}
+
+.pulse:hover {
+  -webkit-animation-name: pulse;  
+  animation-name: pulse;
+  /*-wenkit-animation-duration 若没有设置chrome下不能正常显示*/
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+/*
+animation-timing-function属性值的含义
+linear： 线性过渡。等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0) 
+ease： 平滑过渡。等同于贝塞尔曲线(0.25, 0.1, 0.25, 1.0) 
+ease-in： 由慢到快。等同于贝塞尔曲线(0.42, 0, 1.0, 1.0) 
+ease-out： 由快到慢。等同于贝塞尔曲线(0, 0, 0.58, 1.0) 
+ease-in-out： 由慢到快再到慢。等同于贝塞尔曲线(0.42, 0, 0.58, 1.0) 
+cubic-bezier(<number>, <number>, <number>, <number>)： 特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内 
+*/
+  -webkit-animation-timing-function: linear; 
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+/*pulse grow*/
+@-webkit-keyframes pulse-grow{
+  to {
+    -webkit-transform: scale(1.1);
+  }
+}
+
+@keyframes pulse-grow{
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.pulse-grow{
+  display: inline-block;
+  box-shadow: 0 0 1px rgba(0,0,0,0);
+}
+
+.pulse-grow:hover{
+  -webkit-animation-name: pulse-grow;
+  animation-name: pulse-grow;
+  -webkit-animation-duration: 0.3s; 
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; 
+  /*animation-direction:alternate 设置后动画每0.3执行完一次换一次方向，即向外扩大为1.1倍后再费时0.3秒恢复原状，以此往复*/
+  /*若没有设置动画不流畅*/
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+/*pulse-shrink*/
+/*和pulse-shrink一样，只是将trsndform：scale属性改为0.9
+ animation-name:改为对应的名字，即ok*/
+
+@-webkit-keyframes pulse-shirnk{
+  to {
+    -webkit-transform: scale(0.9);
+  }
+}
+
+@keyframes pulse-shirnk{
+  to {
+    transform: scale(0.9);
+  }
+}
+
+.pulse-shirnk{
+  display: inline-block;
+/*   box-shadow: 0 0 1px rgba(0,0,0,0); */
+}
+
+.pulse-shirnk:hover{
+  -webkit-animation-name: pulse-shirnk;
+  animation-name: pulse-shirnk;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; 
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+/*push*/
+
+@-webkit-keyframes push {
+  50% {
+    -webkit-transform: scale(.8);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+
+/*若设置为50%和100%,则动画略显迟钝*/
+@keyframes push{
+  25%{
+    transform: scale(.8);
+  }
+  75%{
+    transform: scale(1);
+  }
+}
+
+.push{
+  display: inline-block;
+  box-shadow: 0 0 1px rgba(0,0,0,0);
+}
+
+.push:hover {
+  -webkit-animation-name: push;
+  animation-name: push;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  /*下面的属性可有可无*/
+/*-webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1; */
+}
+
+/*pop*/
+
+@-webkit-keyframes pop {
+  50% {
+    -webkit-transform: scale(1.2);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+
+/*若设置为50%和100%,则动画略显迟钝*/
+@keyframes pop {
+  25%{
+    transform: scale(1.2);
+  }
+  75%{
+    transform: scale(1);
+  }
+}
+
+.pop{
+  display: inline-block;
+  box-shadow: 0 0 1px rgba(0,0,0,0);
+}
+
+.pop:hover {
+  -webkit-animation-name: pop;
+  animation-name: pop;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+/*rotate*/
+.rotate{
+  display: inline-block;
+  box-shadow:  0 0 1px rgba(0,0,0,0);
+/*   transition-duration: 0.3s;
+transition-property: transform; */
+
+}
+
+.rotate:hover{
+  transition-duration: 0.3s;
+  -webkit-transform: rotate(15deg);
+  transform: rotate(15deg);
+};
+
+/*grow rotate*/
+.grow-rotate{
+  display: inline-block;
+/*   transition-duration: 0.3s;
+transition-property: transform; */
+}
+
+.grow-rotate:hover{
+  transition-duration: 0.3s;
+  -webkit-transform: scale(1.1) rotate(15deg);
+  transform: scale(1.1) rotate(15deg);
+}
+
+/*float*/
+.float{
+  display: inline-block;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.float:hover{
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+
+/*sink*/
+.sink{
+  display: inline-block;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.sink:hover{
+  -webkit-transform: translateY(8px);
+  transform: translateY(8px);
+}
+
+/*hover*/
+@-webkit-keyframes hover{
+  50%{
+    -webkit-transform: translateY(-3px);
+  }
+  100%{
+    -webkit-transform: translateY(-6px);
+  }
+}
+
+@keyframes hover{
+  50%{
+    transform: translateY(-3px);
+  }
+  100%{
+    transform: translateY(-9px);
+  }
+}
+
+/************************hover**************************/
+.hover{
+  display: inline-block;
+  /*下面的属性不设置不影响效果*/
+/*   -webkit-transition-propertity: -webkit-transform;
+transition-propertity: transform; */
+}
+
+.hover:hover{
+  /*先设置translateY使按钮上升6px*/
+  -webkit-transform: translateY(-6px);
+  transform: translateY(-6px); 
+  -webkit-animation-name: hover; 
+  animation-name: hover;
+  -webkit-animation-duration: 1s; 
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.3s; 
+  animation-delay: 0.3s;
+  -webkit-animation-timing-function: linear; 
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite; 
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate; 
+  animation-direction: alternate; 
+}
+
+/**************************hang**********************/
+@-webkit-keyframes hang{
+  50%{
+    -webkit-transform: translateY(3px);
+  }
+  100%{
+    -webkit-transform: translateY(6px);
+  }
+}
+
+@keyframes hang{
+  50%{
+    transform: translateY(3px);
+  }
+  100%{
+    transform: translateY(9px);
+  }
+}
+
+.hang{
+  display: inline-block;
+  -webkit-transition-propertity: -webkit-transform;
+  transition-propertity: transform;
+}
+
+.hang:hover{
+  -webkit-transform: translateY(6px); 
+  transform: translateY(6px); 
+  -webkit-animation-name: hang; 
+  animation-name: hang;
+  -webkit-animation-duration: 1s; 
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.3s; 
+  animation-delay: 0.3s;
+  -webkit-animation-timing-function: linear; 
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite; 
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate; 
+  animation-direction: alternate; 
+}
+
+/*********************skew************************/
+.skew {
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+}
+
+.skew:hover{
+  -webkit-transform: skew(15deg); 
+  transform: skew(15deg);
+}
+
+/*******************skew forward*****************/
+.skew-forward{
+  -webkit-transform-origin: 0 100%;
+/*   -ms-transform-origin: 0 100%; */
+  transform-origin: 0 100%; 
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+}
+
+.skew-forward:hover{
+  transition-duration: 0.3s;
+  -webkit-transform: skew(-10deg);
+  transform: skew(-10deg);
+}
+
+/********************skew backward*********************/
+.skew-backward{
+  -webkit-transform-origin: 0 100%;
+/*   -ms-transform-origin: 0 100%; */
+  transform-origin: 0 100%; 
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+}
+
+.skew-backward:hover{
+  transition-duration: 0.3s;
+  -webkit-transform: skew(10deg);
+  transform: skew(10deg);
+}
+
+/**************Wobble Horizontal**********************/
+@-webkit-keyframes wobble-horizontal {
+  12.5% {
+    -webkit-transform: translateX(10px);
+  }
+
+  25% {
+    -webkit-transform: translateX(-7px);
+  }
+
+  37.5% {
+    -webkit-transform: translateX(5px);
+  }
+
+  50% {
+    -webkit-transform: translateX(-4px);
+  }
+
+  62.5% {
+    -webkit-transform: translateX(3px);
+  }
+
+  75% {
+    -webkit-transform: translateX(-2px);
+  }
+
+  87.5% {
+    -webkit-transform: translateX(1px);
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+
+@keyframes wobble-horizontal {
+  12.5% {
+    transform: translateX(10px);
+  }
+
+  25% {
+    transform: translateX(-7px);
+  }
+
+  37.5% {
+    transform: translateX(5px);
+  }
+
+  50% {
+    transform: translateX(-4px);
+  }
+
+  62.5% {
+    transform: translateX(3px);
+  }
+
+  75% {
+    transform: translateX(-2px);
+  }
+
+  87.5% {
+    transform: translateX(1px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.wobble-horizontal:hover{
+  -webkit-animation-name: wobble-horizontal; 
+  animation-name: wobble-horizontal;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1; 
+}
+
+/*******************wobble-vertical************/
+/*和wobble-horizontal效果实现方法一样，只需改translateX为translateY*/
+@-webkit-keyframes wobble-vertical {
+  12.5% {
+    -webkit-transform: translateY(10px);
+  }
+
+  25% {
+    -webkit-transform: translateY(-7px);
+  }
+
+  37.5% {
+    -webkit-transform: translateY(5px);
+  }
+
+  50% {
+    -webkit-transform: translateY(-4px);
+  }
+
+  62.5% {
+    -webkit-transform: translateY(3px);
+  }
+
+  75% {
+    -webkit-transform: translateY(-2px);
+  }
+
+  87.5% {
+    -webkit-transform: translateY(1px);
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes wobble-vertical {
+  12.5% {
+    transform: translateY(10px);
+  }
+
+  25% {
+    transform: translateY(-7px);
+  }
+
+  37.5% {
+    transform: translateY(5px);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+
+  62.5% {
+    transform: translateY(3px);
+  }
+
+  75% {
+    transform: translateY(-2px);
+  }
+
+  87.5% {
+    transform: translateY(1px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.wobble-vertical:hover{
+  -webkit-animation-name: wobble-vertical; 
+  animation-name: wobble-vertical;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1; 
+}
+
+/*********************wobble top*******************/
+/*改变transformskew属性*/
+@-webkit-keyframes wobble-top {
+  12.5% {
+    -webkit-transform: skew(10deg);
+  }
+
+  25% {
+    -webkit-transform: skew(-7deg);
+  }
+
+  37.5% {
+    -webkit-transform: skew(5deg);
+  }
+
+  50% {
+    -webkit-transform: skew(-4deg);
+  }
+
+  62.5% {
+    -webkit-transform: skew(3deg);
+  }
+
+  75% {
+    -webkit-transform: skew(-2deg);
+  }
+
+  87.5% {
+    -webkit-transform: skew(1deg);
+  }
+
+  100% {
+    -webkit-transform: skew(0deg);
+  }
+}
+
+@keyframes wobble-top {
+  12.5% {
+    transform: skew(10deg);
+  }
+
+  25% {
+    transform: skew(-7deg);
+  }
+
+  37.5% {
+    transform: skew(5deg);
+  }
+
+  50% {
+    transform: skew(-4deg);
+  }
+
+  62.5% {
+    transform: skew(3deg);
+  }
+
+  75% {
+    transform: skew(-2deg);
+  }
+
+  87.5% {
+    transform: skew(1deg);
+  }
+
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+.wobble-top{
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+
+.wobble-top:hover{
+  -webkit-animation-name: wobble-top; 
+  animation-name: wobble-top;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out; 
+  -webkit-animation-iteration-count: 1; 
+  animation-iteration-count: 1; 
+}
+
+/*wobble-bottom*/
+@-webkit-keyframes wobble-bottom {
+  12.5% {
+    -webkit-transform: skew(10deg);
+  }
+
+  25% {
+    -webkit-transform: skew(-7deg);
+  }
+
+  37.5% {
+    -webkit-transform: skew(5deg);
+  }
+
+  50% {
+    -webkit-transform: skew(-4deg);
+  }
+
+  62.5% {
+    -webkit-transform: skew(3deg);
+  }
+
+  75% {
+    -webkit-transform: skew(-2deg);
+  }
+
+  87.5% {
+    -webkit-transform: skew(1deg);
+  }
+
+  100% {
+    -webkit-transform: skew(0deg);
+  }
+}
+
+@keyframes wobble-bottom {
+  12.5% {
+    transform: skew(10deg);
+  }
+
+  25% {
+    transform: skew(-7deg);
+  }
+
+  37.5% {
+    transform: skew(5deg);
+  }
+
+  50% {
+    transform: skew(-4deg);
+  }
+
+  62.5% {
+    transform: skew(3deg);
+  }
+
+  75% {
+    transform: skew(-2deg);
+  }
+
+  87.5% {
+    transform: skew(1deg);
+  }
+
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+.wobble-bottom{
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+
+.wobble-bottom:hover{
+  -webkit-animation-name: wobble-bottom; 
+  animation-name: wobble-bottom;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out; 
+  -webkit-animation-iteration-count: 1; 
+  animation-iteration-count: 1; 
+}
+
+/*****************wobble skew***************/
+@-webkit-keyframes wobble-skew {
+  12.5% {
+    -webkit-transform: skew(10deg);
+  }
+
+  25% {
+    -webkit-transform: skew(-7deg);
+  }
+
+  37.5% {
+    -webkit-transform: skew(5deg);
+  }
+
+  50% {
+    -webkit-transform: skew(-4deg);
+  }
+
+  62.5% {
+    -webkit-transform: skew(3deg);
+  }
+
+  75% {
+    -webkit-transform: skew(-2deg);
+  }
+
+  87.5% {
+    -webkit-transform: skew(1deg);
+  }
+
+  100% {
+    -webkit-transform: skew(0deg);
+  }
+}
+
+@keyframes wobble-skew {
+  12.5% {
+    transform: skew(10deg);
+  }
+
+  25% {
+    transform: skew(-7deg);
+  }
+
+  37.5% {
+    transform: skew(5deg);
+  }
+
+  50% {
+    transform: skew(-4deg);
+  }
+
+  62.5% {
+    transform: skew(3deg);
+  }
+
+  75% {
+    transform: skew(-2deg);
+  }
+
+  87.5% {
+    transform: skew(1deg);
+  }
+
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+/* .wobble-skew{
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+} */
+
+.wobble-skew:hover{
+  -webkit-animation-name: wobble-skew; 
+  animation-name: wobble-skew;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out; 
+  -webkit-animation-iteration-count: 1; 
+  animation-iteration-count: 1; 
+}
+
+/*******************buzz****************/
+@-webkit-keyframes buzz{
+  50%{
+    -webkit-transform: translateX(3px) rotate(2deg);
+  }
+  100%{
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+  }
+}
+
+@keyframes buzz{
+  50%{
+    transform: translateX(3px) rotate(2deg);
+  }
+  100%{
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+
+.buzz:hover{
+  -webkit-animation-name: buzz;
+  animation-name: buzz;
+  -webkit-animation-duration: 0.15s;
+  animation-duration: 0.15s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+/***********buzz out***********/
+/*buzz out 效果是buzz效果执行一定数目的次数，执行完停止
+所以这里用animation来设置动画，使按钮同时左右运动和旋转五次
+执行动画的同时缩小reanslateX的值和rotate的值*/
+@-webkit-keyframes buzz-out{
+  10%{
+    -webkit-transform: translateX(3px) rotate(2deg);
+  }
+  20%{
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+  }
+  30%{
+    -webkit-transform: translateX(3px) rotate(2deg);
+  }
+  40%{
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+  }
+  50%{
+    -webkit-transform: translateX(2px) rotate(1deg);
+  }
+  60%{
+    -webkit-transform: translateX(-2px) rotate(-1deg);
+  }
+  70%{
+    -webkit-transform: translateX(2px) rotate(1deg);
+  }
+  80%{
+    -webkit-transform: translateX(-2px) rotate(-1deg);
+  }
+  90%{
+    -webkit-transform: translateX(1px) rotate(0);
+  }
+  100%{
+    -webkit-transform: translateX(-1px) rotate(0);
+  }
+}
+
+@keyframes buzz-out{
+  10%{
+    transform: translateX(3px) rotate(2deg);
+  }
+  20%{
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  30%{
+    transform: translateX(3px) rotate(2deg);
+  }
+  40%{
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  50%{
+    transform: translateX(2px) rotate(1deg);
+  }
+  60%{
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  70%{
+    transform: translateX(2px) rotate(1deg);
+  }
+  80%{
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  90%{
+    transform: translateX(1px) rotate(0deg);
+  }
+  100%{
+    transform: translateX(-1px) rotate(0deg);
+  }
+}
+
+.buzz-out:hover{
+  -webkit-animation-name: buzz-out;
+  animation-name: buzz-out;
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+/*第二部分*/
+/*****Border Transitions*************/
+
+/*************border fade************/
+.border-fade{
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-prperty: box-shadow;
+  transition-prperty: box-shadow;
+  /*此处设置了box-shadow后边框的变化变成了动画效果，不再是突变，而是在duration内变为指定效果*/
+  box-shadow: inset 0 0 0 4px #333;
+}
+.border-fade:hover{
+  box-shadow: inset 0 0 0 4px blue;
+}
+
+/****************hollow*************/
+.hollow{
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-prperty: background;
+  transition-prperty: background;
+  box-shadow: inset 0 0 0 4px #333;
+}
+
+.hollow:hover{
+  background: none;
+}
+
+/******************trim************/
+.trim {
+  display: inline-block;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.trim:before {
+  content: '';
+  position: absolute;
+  border: white solid 4px;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.trim:hover:before {
+  opacity: 1;
+}
+
+/************round corner***********/
+.round-corner{
+  /*下面的属性如果放在:hover事件下，则移除鼠标按钮立即变为矩形*/
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: border-radius;
+  transition-property: border-radius;
+}
+.round-corner:hover{
+  
+  border-radius: 1em;
+}
+
+/*第三部分*/
+/**************Shadow and Glow Transitions***********/
+
+/*****************glow***************/
+.glow{
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  background-color: #e1e1e1;
+}
+
+.glow:hover{
+  box-shadow: 0 0 12px rgba(0,0,0,0.9);
+}
+
+/**********box shadow outside**********/
+.box-shadow-outset{
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  background-color: #e1e1e1;
+}
+.box-shadow-outset:hover{
+  box-shadow: 3px 3px rgba(0,0,0,0.6);
+}
+
+/**********box-shadow-inset**********/
+/*将阴影位置变为右边和下边就ok*/
+.box-shadow-inset{
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  background-color: #e1e1e1;
+  box-shadow:0px 0px 0px 0px rgba(0,0,0,.6) inset;
+}
+
+.box-shadow-inset:hover{
+  box-shadow:2px 2px 3px 1px rgba(0,0,0,.6) inset;
+}
+
+/**********relief**********/
+.relief{
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  background-color: #e1e1e1;
+  box-shadow:0px 0px 0px 0px rgba(0,0,0,.6) inset;
+}
+
+.relief:hover{
+  box-shadow:-2px -2px 3px 1px rgba(0,0,0,.6) inset;
+}
+
+/* Float Shadow */
+/*通过:before伪类在button下面做一个阴影的效果，设其opacity为0，将之隐藏然后设置transform效果，
+当hover事件触发时让button向上移动，同时将伪类的opacity属性设为1，将其显示*/
+ .float-shadow {
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+}
+
+.float-shadow:before {
+  /*去掉悬停事件绑定，使事件触发依旧为button*/
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  /*做出阴影的背影效果*/
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: -webkit-transform, opacity;
+  transition-property: transform, opacity;
+}
+
+.float-shadow:hover {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  /*因为当button上移10px时，:before伪类也会紧贴着button上移10px
+  所以为了让阴影和button之间有间距，将button只上移5px，同时为了
+  抵消button上移的影响，使:before伪类还会在原来的位置，将:before
+  伪类下移5px*/
+}
+
+.float-shadow:hover:before {
+  opacity: 1;
+  -webkit-transform: translateY(5px);
+  transform: translateY(5px);
+}
+
+/* Hover Shadow */
+/*实现此效果的基本思想
+1：button上下移动
+2：button移动的同时阴影的透明度随着移动的节奏变化
+所以可以通过hover动画调用translateY使button有规律的上下移动
+同时通过:before伪类创建一个阴影
+再为伪类设置一个hover-shadow动画，实现随着button的节奏改变阴影的透明度;
+*/
+@keyframes hover {
+  50% {
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+
+  100% {
+    -webkit-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+}
+
+/*为了保持阴影的高度不变，所以要随着button的变化而变化*/
+/*同时改变透明度，使button在不同高度时阴影透明度不同*/
+@-webkit-keyframes hover-shadow {
+/*   0% {
+  -webkit-transform: translateY(6px);
+  opacity: .4;
+} */
+
+  50% {
+    -webkit-transform: translateY(3px);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateY(6px);
+    opacity: .4;
+  }
+}
+
+@keyframes hover-shadow {
+/*   0% {
+  transform: translateY(6px);
+  opacity: .4;
+} */
+
+  50% {
+    transform: translateY(3px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(6px);
+    opacity: .4;
+  }
+}
+
+.hover-shadow {
+  display: inline-block;
+  position: relative;
+/*   -webkit-transition-property: -webkit-transform;
+transition-property: transform; */
+  background-color: #e1e1e1
+}
+
+.hover-shadow:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  /*画出阴影*/
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+/*   -webkit-transition-property: -webkit-transform, opacity;
+transition-property: transform, opacity; */
+}
+
+.hover-shadow:hover {
+  -webkit-transform: translateY(-6px);
+  transform: translateY(-6px);
+  -webkit-animation-name: hover;
+  animation-name: hover;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+.hover-shadow:hover:before {
+  opacity: .4;
+  -webkit-transform: translateY(6px);
+  -ms-transform: translateY(6px);
+  transform: translateY(6px);
+  -webkit-animation-name: hover-shadow;
+  animation-name: hover-shadow;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-delay: .3s;
+  animation-delay: .3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+/*************shadow radial*************/
+/*基本想法
+1：通过:before,:after伪类创造上下两个阴影
+2：通过设置透明度和hover事件控制阴影的显现
+*/
+
+.shadow-radial{
+  position: relative;
+  background-color: #e1e1e1;
+}
+
+.shadow-radial:before,
+.shadow-radial:after{
+  content:"";
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  left: 0;
+  opacity: 0;
+/*   background-repeat: no-repeat; */
+/*   -moz-box-sizing: border-box; */
+/*   box-sizing: border-box; */
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+
+}
+
+.shadow-radial:before{
+  bottom: 100%;
+  background: -webkit-radial-gradient(50% 150%, ellipse, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
+  background: radial-gradient(ellipse at 50% 150%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
+}
+
+.shadow-radial:after{
+  top: 100%;
+  background: -webkit-radial-gradient(50% -50%, ellipse, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
+  background: radial-gradient(ellipse at 50% -50%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
+}
+
+.shadow-radial:hover:before,
+.shadow-radial:hover:after{
+  opacity: 1;
+}
+/*****第四部分*****/
+/*********Speech Bubbles**********/
+.bubble-top {
+  /*position设置为positive可以限制三角形在按钮内*/
+  position: relative;
+}
+
+.bubble-top:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1; 
+  content: '';
+  border-style: solid;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: top;
+  transition-property: top;
+  left: -webkit-calc(50% - 10px);
+  left: calc(50% - 10px);
+  /*如果没有top=0，则无法实现duration为0.3秒效果*/
+  top: 0;
+  /*创造了一个方向向上的等腰三角形，底边20px，高10px*/
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #333 transparent;
+}
+
+.bubble-top:hover:before {
+  top: -10px;
+}
+
+/* Bubble Right */
+
+.bubble-right {
+  /*position设置为positive可以限制三角形在按钮内*/
+  position: relative;
+}
+
+.bubble-right:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  border-style: solid;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: right;
+  transition-property: right;
+  top: -webkit-calc(50% - 10px);
+  top: calc(50% - 10px);
+  right: 0;
+  /*创造了一个方向向右的等腰三角形，底边20px，高10px*/
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #333;
+}
+
+.bubble-right:hover:before {
+  right: -10px;
+}
+
+/*同样的方法可以设置见箭头为下和为左的按钮，这里就不一一写了*/
+
+/**********bubble-float-bottom**********/
+
+.bubble-float-bottom {
+  /*position设置为positive可以限制三角形在按钮内*/
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+}
+
+.bubble-float-bottom:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  border-style: solid;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: bottom;
+  transition-property: bottom;
+  left: -webkit-calc(50% - 10px);
+  left: calc(50% - 10px);
+  bottom: 0;
+  /*创造了一个方向向下的等腰三角形，底边20px，高10px*/
+  border-width: 10px 10px 0 10px;
+  border-color: #333 transparent transparent transparent;
+}
+.bubble-float-bottom:hover{
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+.bubble-float-bottom:hover:before {
+  /*:before伪类总是相对于button定位的，所以这里bottom属性依旧设置为10px，即使button要向上移动5px*/
+  /*为什么设置为10px时中间有一条线*/
+  bottom: -9px;
+/*   top: 100%; */
+}
+
+/**********bubble-float-left**********/
+
+.bubble-float-left {
+  /*position设置为positive可以限制三角形在按钮内*/
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.bubble-float-left:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+   content: '';
+  border-style: solid;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: left;
+  transition-property: left;
+  top: -webkit-calc(50% - 10px);
+  top: calc(50% - 10px);
+  left: 0;
+  /*创造了一个方向向左的等腰三角形，底边20px，高10px*/
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #333 transparent transparent;
+}
+.bubble-float-left:hover{
+  -webkit-transform: translateX(5px);
+  transform: translateX(5px);
+}
+.bubble-float-left:hover:before {
+  left: -9px;
+}
+
+/*第五部分*/
+/****************curls****************/
+
+/* curl top left */
+
+.curl-top-left {
+  position: relative;
+}
+
+.curl-top-left:before {
+  pointer-events: none;
+  position: absolute;
+  content: '';
+  height: 0;
+  width: 0;
+  top: 0;
+  left: 0;
+  background: white;
+  /*创建渐变的阴影效果*/
+  /*如果不设置deg属性，则从上到下按设置的颜色渐变*/
+  /*若设置，则0deg为从下到上渐变，然后按照顺时针旋转设置的角度*/
+  background: -webkit-linear-gradient(315deg, white 45%, #aaaaaa 50%, #cccccc 56%, white 80%);
+  background: linear-gradient(135deg, white 45%, #aaaaaa 50%, #cccccc 56%, white 80%);
+  /* filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#000000'); */
+  /*For IE7-8-9*/
+  z-index: 1000; 
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: width, height;
+  transition-property: width, height;
+}
+
+.curl-top-left:hover:before {
+  width: 25px;
+  height: 25px;
+}
+
+/***********curl botton right******/
+.curl-bottom-right {
+  position: relative;
+}
+
+.curl-bottom-right:before {
+  pointer-events: none;
+  position: absolute;
+  content: '';
+  height: 0;
+  width: 0;
+  bottom: 0;
+  right: 0;
+  background: white;
+  /*创建渐变的阴影效果*/
+  background: -webkit-linear-gradient(135deg, white 45%, #aaaaaa 50%, #cccccc 56%, white 80%);
+  background: linear-gradient(315deg, white 45%, #aaaaaa 50%, #cccccc 56%, white 80%);
+  /* filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#000000'); */
+  /*For IE7-8-9*/
+  z-index: 1000;
+  box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.4);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: width, height;
+  transition-property: width, height;
+}
+
+.curl-bottom-right:hover:before {
+  width: 25px;
+  height: 25px;
+}
+
